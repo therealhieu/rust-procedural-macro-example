@@ -1,7 +1,7 @@
 # Procedural Macros Example
 ## Key concepts
 
-The library `[proc_macro`,](https://doc.rust-lang.org/proc_macro/) provided by the standard distribution, provides the types consumed in the interfaces of procedurally defined macro definitions such as function-like macros `#[proc_macro]`, macro attributes `#[proc_macro_attribute]` and custom derive attributes`#[proc_macro_derive]`.
+The library [`proc_macro`](https://doc.rust-lang.org/proc_macro/) provided by the standard distribution, provides the types consumed in the interfaces of procedurally defined macro definitions such as function-like macros `#[proc_macro]`, macro attributes `#[proc_macro_attribute]` and custom derive attributes`#[proc_macro_derive]`.
 
 `#[proc_macro]` is a procedural macro that creates **function-like macros**.*Function-like procedural macros* are procedural macros that are invoked using the macro invocation operator (`!`).These macros are defined by a [public](https://doc.rust-lang.org/reference/visibility-and-privacy.html)  [function](https://doc.rust-lang.org/reference/items/functions.html) with the `proc_macro`  [attribute](https://doc.rust-lang.org/reference/attributes.html) and a signature of `(TokenStream) -> TokenStream`.
 
