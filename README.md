@@ -91,7 +91,7 @@ pub fn add_greet(input: TokenStream) -> TokenStream {
 
 syn is a parsing library for parsing a stream of Rust tokens into a syntax tree of Rust source code.
 
-`[quote!](https://docs.rs/quote/latest/quote/macro.quote.html)` macro  is used to turn Rust syntax tree data structures into tokens of source code.
+[quote!](https://docs.rs/quote/latest/quote/macro.quote.html) macro  is used to turn Rust syntax tree data structures into tokens of source code.
 
 With this macro defined, we can use it like this:
 
@@ -450,7 +450,7 @@ DeriveInput {
 
 In this example, we focus on `attrs`,  therefore it is unnecessary to care about other fields.
 
-As you can see,  attributes are already parsed as `[Attribute](https://docs.rs/syn/latest/syn/struct.Attribute.html),` . The algorithm to construct `Greet2Args` is iterating over `Attributes` → check the `meta.path` ident, get the key-value argument from `meta.tokens` `TokenStream` as in [`#[proc_macro_attribute]` ](https://www.notion.so/proc_macro_attribute-98855aa1b425421b8f6eb6938714e0bd).  `darling`
+As you can see,  attributes are already parsed as [Attribute](https://docs.rs/syn/latest/syn/struct.Attribute.html), . The algorithm to construct `Greet2Args` is iterating over `Attributes` → check the `meta.path` ident, get the key-value argument from `meta.tokens` `TokenStream` as in [`#[proc_macro_attribute]` ](#proc_macro_attribute).  `darling`
 
 handles this for us.
 
