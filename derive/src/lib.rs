@@ -101,7 +101,6 @@ struct Greet2Args {
 #[proc_macro_derive(Greet2, attributes(greet2))]
 pub fn greet2(input: TokenStream) -> TokenStream {
     let input = parse_macro_input!(input as DeriveInput);
-    eprintln!("{:#?}", input);
     let greet_attr_args = Greet2Args::from_derive_input(&input).unwrap();
 
     let struct_name = input.ident;
