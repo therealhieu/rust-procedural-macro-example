@@ -1,4 +1,14 @@
 # Procedural Macros Example
+
+- [Procedural Macros Example](#procedural-macros-example)
+  - [Key concepts](#key-concepts)
+  - [Examples](#examples)
+    - [`#[proc_macro]`](#proc_macro)
+    - [`#[proc_macro_attribute]`](#proc_macro_attribute)
+    - [`#[proc_macro_derive]`](#proc_macro_derive)
+    - [`#[proc_macro_derive]` with attributes](#proc_macro_derive-with-attributes)
+  - [References](#references)
+
 ## Key concepts
 
 The library [`proc_macro`](https://doc.rust-lang.org/proc_macro/) provided by the standard distribution, provides the types consumed in the interfaces of procedurally defined macro definitions such as function-like macros `#[proc_macro]`, macro attributes `#[proc_macro_attribute]` and custom derive attributes`#[proc_macro_derive]`.
