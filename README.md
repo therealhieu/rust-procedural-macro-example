@@ -50,7 +50,8 @@ impl Person {
 ```
 
 To do this, we can define a function with the `#[proc_macro` attribute that takes a `TokenStream`
- as input and returns a `TokenStream`  as output. Here's what the macro definition might look like:
+ as input and returns a `TokenStream`  as output. Here's what the macro definition might look like, in [derive/src/lib.rs](derive/src/lib.rs):
+
 
 ```rust
 use proc_macro::TokenStream;
@@ -95,6 +96,9 @@ syn is a parsing library for parsing a stream of Rust tokens into a syntax tree 
 
 With this macro defined, we can use it like this:
 
+In [app/examples/use_proc_macro.rs](app/examples/use_proc_macro.rs):
+
+
 ```rust
 use derive::add_greet;
 
@@ -108,10 +112,10 @@ add_greet!(
 fn main() {
     let hieu = Person {
         name: "Hieu".to_string(),
-        age: 30,
+        age: 24,
     };
 
-    hieu.greet(); # Hello, my name is Hieu and I am 30 years old.
+    hieu.greet(); # Hello, my name is Hieu and I am 24 years old.
 }
 ```
 
@@ -140,9 +144,15 @@ impl Person {
 }
 ```
 
+Run command:
+
+```bash
+cargo run --example use_proc_macro
+```
+
 ### `#[proc_macro_attribute]`
 
-In `derive/src/lib.rs`:
+In [derive/src/lib.rs](derive/src/lib.rs):
 
 ```rust
 use darling::FromMeta;
@@ -244,7 +254,7 @@ attr_args: [
 
 Now we have a list of `NestedMetadata`, all we have to do is iterating through this list  and construct GreetArgs. To check if the ident is `"content"`, we can call `meta.path.is_ident("content")` then get the meta value from `meta.value`.
 
-In `app/src/main.rs`:
+In [app/examples/use_attribute_macro.rs](app/examples/use_attribute_macro.rs):
 
 ```rust
 use derive::greet;
@@ -258,7 +268,7 @@ struct Person {
 pub fn main() {
     let hieu = Person {
         name: "Hieu".to_string(),
-        age: 30,
+        age: 24,
     };
 
     hieu.greet();
@@ -284,6 +294,12 @@ impl Person {
         );
     }
 }
+```
+
+Run command:
+
+```bash
+cargo run --example use_attribute_macro
 ```
 
 ### `#[proc_macro_derive]`
@@ -323,7 +339,7 @@ pub fn greet_derive(input: TokenStream) -> TokenStream {
 
 Note that we no longer need to generate a new struct definition, since we are implementing the `greet`method for the existing struct. Also, since we are using a derive macro, the macro name is now `Greet` instead of `add_greet`. The rest of the macro definition is similar to the previous example.
 
-In `app/src/main.rs`: 
+In [app/examples/use_derive_macro.rs](app/examples/use_derive_macro.rs)]: 
 
 ```rust
 use derive::Greet;
@@ -337,7 +353,7 @@ struct PerSon {
 fn main() {
     let hieu = PerSon {
         name: "Hieu".to_string(),
-        age: 30,
+        age: 24,
     };
 
     hieu.greet();
@@ -358,6 +374,13 @@ impl PerSon {
         );
     }
 }
+```
+
+Run command:
+
+```bash
+cargo run --example use_derive_macro
+
 ```
 
 ### `#[proc_macro_derive]` with attributes
@@ -454,7 +477,7 @@ As you can see,  attributes are already parsed as [Attribute](https://docs.rs/sy
 
 handles this for us.
 
-In `app/src/main.rs`:
+In [app/examples/use_derive_macro_with_attr.rs](app/examples/use_derive_macro_with_attr.rs):
 
 ```rust
 use derive::Greet2;
@@ -469,7 +492,7 @@ struct Person {
 fn main() {
     let hieu = Person {
         name: "Hieu".to_string(),
-        age: 30,
+        age: 24,
     };
 
     hieu.greet();
@@ -493,8 +516,12 @@ impl Person {
 }
 ```
 
-## References
+Run command:
+```bash
+cargo run --example use_derive_macro_with_attr
+```
 
+## References
 [GitHub - dtolnay/proc-macro-workshop: Learn to write Rust procedural macros  [Rust Latam conference, Montevideo Uruguay, March 2019]](https://github.com/dtolnay/proc-macro-workshop#derive-macro-derivebuilder)
 
 [https://github.com/imbolc/rust-derive-macro-guide](https://github.com/imbolc/rust-derive-macro-guide)
